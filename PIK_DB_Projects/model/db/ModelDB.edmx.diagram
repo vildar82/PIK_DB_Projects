@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a6c33b6845348a7982f18c0d89bebd1" Name="Diagram1">
+        <EntityTypeShape EntityType="MDMModel.Area" Width="1.5" PointX="2.875" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Area_group" Width="1.5" PointX="0.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Area_type" Width="1.5" PointX="0.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Building_part" Width="1.5" PointX="11" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Construction_type" Width="1.875" PointX="13.125" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Floor_type" Width="1.5" PointX="13.625" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Object_Area" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Object_Area_Item" Width="1.75" PointX="5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Object_Item" Width="1.5" PointX="5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Object_type" Width="1.875" PointX="11.125" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Objects" Width="1.875" PointX="7.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDMModel.Project_type" Width="1.5" PointX="11" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="MDMModel.FK_Area_Area_type" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Area_group_ext" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Area_group_int" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Area_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Area_Area_no_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Building_part" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Construction_type" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Floor_type" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Area_Item_Object_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Area_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Area_Item_Object_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Item_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Object_type" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="MDMModel.FK_Object_Project_type" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MDMModel.Object_cascade" Width="1.5" PointX="2.25" PointY="7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

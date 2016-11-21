@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище MDMModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Area_id" />
+          </Key>
+          <Property Name="Area_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area_id_access" Type="int" />
+          <Property Name="Area_CRM_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area_type_id" Type="int" Nullable="false" />
+          <Property Name="Area_access_type_id" Type="int" />
+          <Property Name="Area_lenght" Type="real" />
+          <Property Name="Area_width" Type="real" />
+          <Property Name="Area_area" Type="int" />
+          <Property Name="Is_realty" Type="bit" Nullable="false" />
+          <Property Name="Is_living" Type="bit" Nullable="false" />
+          <Property Name="Is_wet" Type="bit" Nullable="false" />
+          <Property Name="Is_open" Type="bit" Nullable="false" />
+          <Property Name="Is_heated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Area_group">
+          <Key>
+            <PropertyRef Name="Area_group_id" />
+          </Key>
+          <Property Name="Area_group_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area_group_id_access" Type="int" />
+          <Property Name="Area_ext_id" Type="int" Nullable="false" />
+          <Property Name="Area_int_id" Type="int" Nullable="false" />
+          <Property Name="Area_int_number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Area_type">
+          <Key>
+            <PropertyRef Name="Area_type_id" />
+          </Key>
+          <Property Name="Area_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area_type_id_access" Type="int" />
+          <Property Name="Area_type" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Building_part">
+          <Key>
+            <PropertyRef Name="Building_part_id" />
+          </Key>
+          <Property Name="Building_part_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Building_part_id_access" Type="int" />
+          <Property Name="Building_part" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Construction_type">
+          <Key>
+            <PropertyRef Name="Construction_type_id" />
+          </Key>
+          <Property Name="Construction_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Construction_type_id_access" Type="int" />
+          <Property Name="Construction_type" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Floor_type">
+          <Key>
+            <PropertyRef Name="Floor_type_id" />
+          </Key>
+          <Property Name="Floor_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Floor_type_id_access" Type="int" />
+          <Property Name="Floor_type" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Object_Area">
+          <Key>
+            <PropertyRef Name="Object_Area_id" />
+          </Key>
+          <Property Name="Object_Area_id" Type="int" Nullable="false" />
+          <Property Name="Object_Area_ext_id" Type="int" />
+          <Property Name="Area_int_id" Type="int" />
+          <Property Name="Area_id_no_parent" Type="int" />
+          <Property Name="Object_Area_ext_number" Type="int" />
+          <Property Name="Area_int_number" Type="int" />
+          <Property Name="Object_Area_ext_Area_int_number" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Object_Area_Item">
+          <Key>
+            <PropertyRef Name="Object_Area_Item_id" />
+          </Key>
+          <Property Name="Object_Area_Item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Object_Area_id" Type="int" />
+          <Property Name="Object_Item_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Object_Item">
+          <Key>
+            <PropertyRef Name="Object_Item_id" />
+          </Key>
+          <Property Name="Object_Item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Object_id" Type="int" />
+          <Property Name="Item_construction_id" Type="int" />
+          <Property Name="Item_construction_colour_id" Type="int" />
+          <Property Name="Object_Item_number" Type="int" />
+        </EntityType>
+        <EntityType Name="Object_type">
+          <Key>
+            <PropertyRef Name="Object_type_id" />
+          </Key>
+          <Property Name="Object_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Object_type_id_access" Type="int" />
+          <Property Name="Object_type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Object_type_short" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Objects">
+          <Key>
+            <PropertyRef Name="Object_id" />
+          </Key>
+          <Property Name="Object_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Object_id_access" Type="int" />
+          <Property Name="Object_id_parent" Type="int" />
+          <Property Name="Object_type_id" Type="int" />
+          <Property Name="Cadaster_number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Object_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Object_number" Type="int" />
+          <Property Name="Object_number_add" Type="nvarchar" MaxLength="10" />
+          <Property Name="Project_type_id" Type="int" />
+          <Property Name="Usage_mos_id" Type="int" />
+          <Property Name="Address_id" Type="int" />
+          <Property Name="Product_id" Type="int" />
+          <Property Name="Building_part_id" Type="int" />
+          <Property Name="Construction_type_id" Type="int" />
+          <Property Name="Floors" Type="smallint" />
+          <Property Name="Froor_type_id" Type="int" />
+          <Property Name="Is_floor" Type="bit" Nullable="false" />
+          <Property Name="Is_technical" Type="bit" Nullable="false" />
+          <Property Name="Area_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Project_type">
+          <Key>
+            <PropertyRef Name="Project_type_id" />
+          </Key>
+          <Property Name="Project_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Project_type_id_access" Type="int" />
+          <Property Name="Project_type" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MDM.dbo.Object_cascade" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Object_cascade">
+          <Key>
+            <PropertyRef Name="Object_id" />
+            <PropertyRef Name="Object" />
+          </Key>
+          <Property Name="Object_id" Type="int" Nullable="false" />
+          <Property Name="Object_id_parent" Type="int" />
+          <Property Name="Object" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Object_type" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Area_Area_type">
+          <End Role="Area_type" Type="Self.Area_type" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area_type">
+              <PropertyRef Name="Area_type_id" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="Area_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_group_ext">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Area_group" Type="Self.Area_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Area_group">
+              <PropertyRef Name="Area_ext_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_group_int">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Area_group" Type="Self.Area_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Area_group">
+              <PropertyRef Name="Area_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Object_Area">
+              <PropertyRef Name="Area_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Area_no_parent">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Object_Area">
+              <PropertyRef Name="Area_id_no_parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Item_Object_Area">
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="0..1" />
+          <End Role="Object_Area_Item" Type="Self.Object_Area_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object_Area">
+              <PropertyRef Name="Object_Area_id" />
+            </Principal>
+            <Dependent Role="Object_Area_Item">
+              <PropertyRef Name="Object_Area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Item_Object_Item">
+          <End Role="Object_Item" Type="Self.Object_Item" Multiplicity="0..1" />
+          <End Role="Object_Area_Item" Type="Self.Object_Area_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object_Item">
+              <PropertyRef Name="Object_Item_id" />
+            </Principal>
+            <Dependent Role="Object_Area_Item">
+              <PropertyRef Name="Object_Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Object">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="Object_id" />
+            </Principal>
+            <Dependent Role="Object_Area">
+              <PropertyRef Name="Object_Area_ext_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Building_part">
+          <End Role="Building_part" Type="Self.Building_part" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building_part">
+              <PropertyRef Name="Building_part_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Building_part_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Construction_type">
+          <End Role="Construction_type" Type="Self.Construction_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Construction_type">
+              <PropertyRef Name="Construction_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Construction_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Floor_type">
+          <End Role="Floor_type" Type="Self.Floor_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor_type">
+              <PropertyRef Name="Floor_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Froor_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Item_Object">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Object_Item" Type="Self.Object_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="Object_id" />
+            </Principal>
+            <Dependent Role="Object_Item">
+              <PropertyRef Name="Object_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Object">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Objects1" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="Object_id" />
+            </Principal>
+            <Dependent Role="Objects1">
+              <PropertyRef Name="Object_id_parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Object_type">
+          <End Role="Object_type" Type="Self.Object_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object_type">
+              <PropertyRef Name="Object_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Object_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Project_type">
+          <End Role="Project_type" Type="Self.Project_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_type">
+              <PropertyRef Name="Project_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Project_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MDMModelContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area_group" EntityType="Self.Area_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area_type" EntityType="Self.Area_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Building_part" EntityType="Self.Building_part" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Construction_type" EntityType="Self.Construction_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Floor_type" EntityType="Self.Floor_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object_Area" EntityType="Self.Object_Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object_Area_Item" EntityType="Self.Object_Area_Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object_Item" EntityType="Self.Object_Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object_type" EntityType="Self.Object_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objects" EntityType="Self.Objects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_type" EntityType="Self.Project_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object_cascade" EntityType="Self.Object_cascade" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Object_cascade].[Object_id] AS [Object_id], 
+    [Object_cascade].[Object_id_parent] AS [Object_id_parent], 
+    [Object_cascade].[Object] AS [Object], 
+    [Object_cascade].[Object_type] AS [Object_type]
+    FROM [dbo].[Object_cascade] AS [Object_cascade]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Area_Area_type" Association="Self.FK_Area_Area_type">
+            <End Role="Area_type" EntitySet="Area_type" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_group_ext" Association="Self.FK_Area_group_ext">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Area_group" EntitySet="Area_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_group_int" Association="Self.FK_Area_group_int">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Area_group" EntitySet="Area_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area" Association="Self.FK_Object_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Area" Association="Self.FK_Object_Area_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Object_Area" EntitySet="Object_Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Area_no_parent" Association="Self.FK_Object_Area_Area_no_parent">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Object_Area" EntitySet="Object_Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Item_Object_Area" Association="Self.FK_Object_Area_Item_Object_Area">
+            <End Role="Object_Area" EntitySet="Object_Area" />
+            <End Role="Object_Area_Item" EntitySet="Object_Area_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Item_Object_Item" Association="Self.FK_Object_Area_Item_Object_Item">
+            <End Role="Object_Item" EntitySet="Object_Item" />
+            <End Role="Object_Area_Item" EntitySet="Object_Area_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Object" Association="Self.FK_Object_Area_Object">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Object_Area" EntitySet="Object_Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Building_part" Association="Self.FK_Object_Building_part">
+            <End Role="Building_part" EntitySet="Building_part" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Construction_type" Association="Self.FK_Object_Construction_type">
+            <End Role="Construction_type" EntitySet="Construction_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Floor_type" Association="Self.FK_Object_Floor_type">
+            <End Role="Floor_type" EntitySet="Floor_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Item_Object" Association="Self.FK_Object_Item_Object">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Object_Item" EntitySet="Object_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Object" Association="Self.FK_Object_Object">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Objects1" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Object_type" Association="Self.FK_Object_Object_type">
+            <End Role="Object_type" EntitySet="Object_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Project_type" Association="Self.FK_Object_Project_type">
+            <End Role="Project_type" EntitySet="Project_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MDMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Area_id" />
+          </Key>
+          <Property Name="Area_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area_id_access" Type="Int32" />
+          <Property Name="Area_CRM_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area_type_id" Type="Int32" Nullable="false" />
+          <Property Name="Area_access_type_id" Type="Int32" />
+          <Property Name="Area_lenght" Type="Single" />
+          <Property Name="Area_width" Type="Single" />
+          <Property Name="Area_area" Type="Int32" />
+          <Property Name="Is_realty" Type="Boolean" Nullable="false" />
+          <Property Name="Is_living" Type="Boolean" Nullable="false" />
+          <Property Name="Is_wet" Type="Boolean" Nullable="false" />
+          <Property Name="Is_open" Type="Boolean" Nullable="false" />
+          <Property Name="Is_heated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Area_type" Relationship="Self.FK_Area_Area_type" FromRole="Area" ToRole="Area_type" />
+          <NavigationProperty Name="Area_group" Relationship="Self.FK_Area_group_ext" FromRole="Area" ToRole="Area_group" />
+          <NavigationProperty Name="Area_group1" Relationship="Self.FK_Area_group_int" FromRole="Area" ToRole="Area_group" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Area" FromRole="Area" ToRole="Objects" />
+          <NavigationProperty Name="Object_Area" Relationship="Self.FK_Object_Area_Area" FromRole="Area" ToRole="Object_Area" />
+          <NavigationProperty Name="Object_Area1" Relationship="Self.FK_Object_Area_Area_no_parent" FromRole="Area" ToRole="Object_Area" />
+        </EntityType>
+        <EntityType Name="Area_group">
+          <Key>
+            <PropertyRef Name="Area_group_id" />
+          </Key>
+          <Property Name="Area_group_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area_group_id_access" Type="Int32" />
+          <Property Name="Area_ext_id" Type="Int32" Nullable="false" />
+          <Property Name="Area_int_id" Type="Int32" Nullable="false" />
+          <Property Name="Area_int_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Area_group_ext" FromRole="Area_group" ToRole="Area" />
+          <NavigationProperty Name="Area1" Relationship="Self.FK_Area_group_int" FromRole="Area_group" ToRole="Area" />
+        </EntityType>
+        <EntityType Name="Area_type">
+          <Key>
+            <PropertyRef Name="Area_type_id" />
+          </Key>
+          <Property Name="Area_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area_type_id_access" Type="Int32" />
+          <Property Name="Area_type1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Area_Area_type" FromRole="Area_type" ToRole="Area" />
+        </EntityType>
+        <EntityType Name="Building_part">
+          <Key>
+            <PropertyRef Name="Building_part_id" />
+          </Key>
+          <Property Name="Building_part_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Building_part_id_access" Type="Int32" />
+          <Property Name="Building_part1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Building_part" FromRole="Building_part" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="Construction_type">
+          <Key>
+            <PropertyRef Name="Construction_type_id" />
+          </Key>
+          <Property Name="Construction_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Construction_type_id_access" Type="Int32" />
+          <Property Name="Construction_type1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Construction_type" FromRole="Construction_type" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="Floor_type">
+          <Key>
+            <PropertyRef Name="Floor_type_id" />
+          </Key>
+          <Property Name="Floor_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Floor_type_id_access" Type="Int32" />
+          <Property Name="Floor_type1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Floor_type" FromRole="Floor_type" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="Object_Area">
+          <Key>
+            <PropertyRef Name="Object_Area_id" />
+          </Key>
+          <Property Name="Object_Area_id" Type="Int32" Nullable="false" />
+          <Property Name="Object_Area_ext_id" Type="Int32" />
+          <Property Name="Area_int_id" Type="Int32" />
+          <Property Name="Area_id_no_parent" Type="Int32" />
+          <Property Name="Object_Area_ext_number" Type="Int32" />
+          <Property Name="Area_int_number" Type="Int32" />
+          <Property Name="Object_Area_ext_Area_int_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Object_Area_Area" FromRole="Object_Area" ToRole="Area" />
+          <NavigationProperty Name="Area1" Relationship="Self.FK_Object_Area_Area_no_parent" FromRole="Object_Area" ToRole="Area" />
+          <NavigationProperty Name="Object_Area_Item" Relationship="Self.FK_Object_Area_Item_Object_Area" FromRole="Object_Area" ToRole="Object_Area_Item" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Area_Object" FromRole="Object_Area" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="Object_Area_Item">
+          <Key>
+            <PropertyRef Name="Object_Area_Item_id" />
+          </Key>
+          <Property Name="Object_Area_Item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Object_Area_id" Type="Int32" />
+          <Property Name="Object_Item_id" Type="Int32" />
+          <NavigationProperty Name="Object_Area" Relationship="Self.FK_Object_Area_Item_Object_Area" FromRole="Object_Area_Item" ToRole="Object_Area" />
+          <NavigationProperty Name="Object_Item" Relationship="Self.FK_Object_Area_Item_Object_Item" FromRole="Object_Area_Item" ToRole="Object_Item" />
+        </EntityType>
+        <EntityType Name="Object_Item">
+          <Key>
+            <PropertyRef Name="Object_Item_id" />
+          </Key>
+          <Property Name="Object_Item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Object_id" Type="Int32" />
+          <Property Name="Item_construction_id" Type="Int32" />
+          <Property Name="Item_construction_colour_id" Type="Int32" />
+          <Property Name="Object_Item_number" Type="Int32" />
+          <NavigationProperty Name="Object_Area_Item" Relationship="Self.FK_Object_Area_Item_Object_Item" FromRole="Object_Item" ToRole="Object_Area_Item" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Item_Object" FromRole="Object_Item" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="Object_type">
+          <Key>
+            <PropertyRef Name="Object_type_id" />
+          </Key>
+          <Property Name="Object_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Object_type_id_access" Type="Int32" />
+          <Property Name="Object_type1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Object_type_short" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Object_type" FromRole="Object_type" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="Objects">
+          <Key>
+            <PropertyRef Name="Object_id" />
+          </Key>
+          <Property Name="Object_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Object_id_access" Type="Int32" />
+          <Property Name="Object_id_parent" Type="Int32" />
+          <Property Name="Object_type_id" Type="Int32" />
+          <Property Name="Cadaster_number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Object_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Object_number" Type="Int32" />
+          <Property Name="Object_number_add" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Project_type_id" Type="Int32" />
+          <Property Name="Usage_mos_id" Type="Int32" />
+          <Property Name="Address_id" Type="Int32" />
+          <Property Name="Product_id" Type="Int32" />
+          <Property Name="Building_part_id" Type="Int32" />
+          <Property Name="Construction_type_id" Type="Int32" />
+          <Property Name="Floors" Type="Int16" />
+          <Property Name="Froor_type_id" Type="Int32" />
+          <Property Name="Is_floor" Type="Boolean" Nullable="false" />
+          <Property Name="Is_technical" Type="Boolean" Nullable="false" />
+          <Property Name="Area_id" Type="Int32" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Object_Area" FromRole="Objects" ToRole="Area" />
+          <NavigationProperty Name="Building_part" Relationship="Self.FK_Object_Building_part" FromRole="Objects" ToRole="Building_part" />
+          <NavigationProperty Name="Construction_type" Relationship="Self.FK_Object_Construction_type" FromRole="Objects" ToRole="Construction_type" />
+          <NavigationProperty Name="Floor_type" Relationship="Self.FK_Object_Floor_type" FromRole="Objects" ToRole="Floor_type" />
+          <NavigationProperty Name="Object_Area" Relationship="Self.FK_Object_Area_Object" FromRole="Objects" ToRole="Object_Area" />
+          <NavigationProperty Name="Object_Item" Relationship="Self.FK_Object_Item_Object" FromRole="Objects" ToRole="Object_Item" />
+          <NavigationProperty Name="Object_type" Relationship="Self.FK_Object_Object_type" FromRole="Objects" ToRole="Object_type" />
+          <NavigationProperty Name="Objects1" Relationship="Self.FK_Object_Object" FromRole="Objects" ToRole="Objects1" />
+          <NavigationProperty Name="Objects2" Relationship="Self.FK_Object_Object" FromRole="Objects1" ToRole="Objects" />
+          <NavigationProperty Name="Project_type" Relationship="Self.FK_Object_Project_type" FromRole="Objects" ToRole="Project_type" />
+        </EntityType>
+        <EntityType Name="Project_type">
+          <Key>
+            <PropertyRef Name="Project_type_id" />
+          </Key>
+          <Property Name="Project_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Project_type_id_access" Type="Int32" />
+          <Property Name="Project_type1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Project_type" FromRole="Project_type" ToRole="Objects" />
+        </EntityType>
+        <Association Name="FK_Area_Area_type">
+          <End Role="Area_type" Type="Self.Area_type" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area_type">
+              <PropertyRef Name="Area_type_id" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="Area_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_group_ext">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Area_group" Type="Self.Area_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Area_group">
+              <PropertyRef Name="Area_ext_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_group_int">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Area_group" Type="Self.Area_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Area_group">
+              <PropertyRef Name="Area_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Object_Area">
+              <PropertyRef Name="Area_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Area_no_parent">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area_id" />
+            </Principal>
+            <Dependent Role="Object_Area">
+              <PropertyRef Name="Area_id_no_parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Building_part">
+          <End Role="Building_part" Type="Self.Building_part" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building_part">
+              <PropertyRef Name="Building_part_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Building_part_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Construction_type">
+          <End Role="Construction_type" Type="Self.Construction_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Construction_type">
+              <PropertyRef Name="Construction_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Construction_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Floor_type">
+          <End Role="Floor_type" Type="Self.Floor_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor_type">
+              <PropertyRef Name="Floor_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Froor_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Item_Object_Area">
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="0..1" />
+          <End Role="Object_Area_Item" Type="Self.Object_Area_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object_Area">
+              <PropertyRef Name="Object_Area_id" />
+            </Principal>
+            <Dependent Role="Object_Area_Item">
+              <PropertyRef Name="Object_Area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Object">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Object_Area" Type="Self.Object_Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="Object_id" />
+            </Principal>
+            <Dependent Role="Object_Area">
+              <PropertyRef Name="Object_Area_ext_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Area_Item_Object_Item">
+          <End Role="Object_Item" Type="Self.Object_Item" Multiplicity="0..1" />
+          <End Role="Object_Area_Item" Type="Self.Object_Area_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object_Item">
+              <PropertyRef Name="Object_Item_id" />
+            </Principal>
+            <Dependent Role="Object_Area_Item">
+              <PropertyRef Name="Object_Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Item_Object">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Object_Item" Type="Self.Object_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="Object_id" />
+            </Principal>
+            <Dependent Role="Object_Item">
+              <PropertyRef Name="Object_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Object_type">
+          <End Role="Object_type" Type="Self.Object_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object_type">
+              <PropertyRef Name="Object_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Object_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Object">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Objects1" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="Object_id" />
+            </Principal>
+            <Dependent Role="Objects1">
+              <PropertyRef Name="Object_id_parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Project_type">
+          <End Role="Project_type" Type="Self.Project_type" Multiplicity="0..1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_type">
+              <PropertyRef Name="Project_type_id" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="Project_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MDMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Area_group" EntityType="Self.Area_group" />
+          <EntitySet Name="Area_type" EntityType="Self.Area_type" />
+          <EntitySet Name="Building_part" EntityType="Self.Building_part" />
+          <EntitySet Name="Construction_type" EntityType="Self.Construction_type" />
+          <EntitySet Name="Floor_type" EntityType="Self.Floor_type" />
+          <EntitySet Name="Object_Area" EntityType="Self.Object_Area" />
+          <EntitySet Name="Object_Area_Item" EntityType="Self.Object_Area_Item" />
+          <EntitySet Name="Object_Item" EntityType="Self.Object_Item" />
+          <EntitySet Name="Object_type" EntityType="Self.Object_type" />
+          <EntitySet Name="Objects" EntityType="Self.Objects" />
+          <EntitySet Name="Project_type" EntityType="Self.Project_type" />
+          <AssociationSet Name="FK_Area_Area_type" Association="Self.FK_Area_Area_type">
+            <End Role="Area_type" EntitySet="Area_type" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_group_ext" Association="Self.FK_Area_group_ext">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Area_group" EntitySet="Area_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_group_int" Association="Self.FK_Area_group_int">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Area_group" EntitySet="Area_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area" Association="Self.FK_Object_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Area" Association="Self.FK_Object_Area_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Object_Area" EntitySet="Object_Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Area_no_parent" Association="Self.FK_Object_Area_Area_no_parent">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Object_Area" EntitySet="Object_Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Building_part" Association="Self.FK_Object_Building_part">
+            <End Role="Building_part" EntitySet="Building_part" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Construction_type" Association="Self.FK_Object_Construction_type">
+            <End Role="Construction_type" EntitySet="Construction_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Floor_type" Association="Self.FK_Object_Floor_type">
+            <End Role="Floor_type" EntitySet="Floor_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Item_Object_Area" Association="Self.FK_Object_Area_Item_Object_Area">
+            <End Role="Object_Area" EntitySet="Object_Area" />
+            <End Role="Object_Area_Item" EntitySet="Object_Area_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Object" Association="Self.FK_Object_Area_Object">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Object_Area" EntitySet="Object_Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Area_Item_Object_Item" Association="Self.FK_Object_Area_Item_Object_Item">
+            <End Role="Object_Item" EntitySet="Object_Item" />
+            <End Role="Object_Area_Item" EntitySet="Object_Area_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Item_Object" Association="Self.FK_Object_Item_Object">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Object_Item" EntitySet="Object_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Object_type" Association="Self.FK_Object_Object_type">
+            <End Role="Object_type" EntitySet="Object_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Object" Association="Self.FK_Object_Object">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Objects1" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Project_type" Association="Self.FK_Object_Project_type">
+            <End Role="Project_type" EntitySet="Project_type" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <EntitySet Name="Object_cascade" EntityType="MDMModel.Object_cascade" />
+        </EntityContainer>
+        <EntityType Name="Object_cascade">
+          <Key>
+            <PropertyRef Name="Object_id" />
+            <PropertyRef Name="Object" />
+          </Key>
+          <Property Name="Object_id" Type="Int32" Nullable="false" />
+          <Property Name="Object" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Object_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Object_id_parent" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MDMModelContainer" CdmEntityContainer="MDMEntities">
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="MDMModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Area_id" ColumnName="Area_id" />
+                <ScalarProperty Name="Area_id_access" ColumnName="Area_id_access" />
+                <ScalarProperty Name="Area_CRM_code" ColumnName="Area_CRM_code" />
+                <ScalarProperty Name="Area_type_id" ColumnName="Area_type_id" />
+                <ScalarProperty Name="Area_access_type_id" ColumnName="Area_access_type_id" />
+                <ScalarProperty Name="Area_lenght" ColumnName="Area_lenght" />
+                <ScalarProperty Name="Area_width" ColumnName="Area_width" />
+                <ScalarProperty Name="Area_area" ColumnName="Area_area" />
+                <ScalarProperty Name="Is_realty" ColumnName="Is_realty" />
+                <ScalarProperty Name="Is_living" ColumnName="Is_living" />
+                <ScalarProperty Name="Is_wet" ColumnName="Is_wet" />
+                <ScalarProperty Name="Is_open" ColumnName="Is_open" />
+                <ScalarProperty Name="Is_heated" ColumnName="Is_heated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area_group">
+            <EntityTypeMapping TypeName="MDMModel.Area_group">
+              <MappingFragment StoreEntitySet="Area_group">
+                <ScalarProperty Name="Area_group_id" ColumnName="Area_group_id" />
+                <ScalarProperty Name="Area_group_id_access" ColumnName="Area_group_id_access" />
+                <ScalarProperty Name="Area_ext_id" ColumnName="Area_ext_id" />
+                <ScalarProperty Name="Area_int_id" ColumnName="Area_int_id" />
+                <ScalarProperty Name="Area_int_number" ColumnName="Area_int_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area_type">
+            <EntityTypeMapping TypeName="MDMModel.Area_type">
+              <MappingFragment StoreEntitySet="Area_type">
+                <ScalarProperty Name="Area_type_id" ColumnName="Area_type_id" />
+                <ScalarProperty Name="Area_type_id_access" ColumnName="Area_type_id_access" />
+                <ScalarProperty Name="Area_type1" ColumnName="Area_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Building_part">
+            <EntityTypeMapping TypeName="MDMModel.Building_part">
+              <MappingFragment StoreEntitySet="Building_part">
+                <ScalarProperty Name="Building_part_id" ColumnName="Building_part_id" />
+                <ScalarProperty Name="Building_part_id_access" ColumnName="Building_part_id_access" />
+                <ScalarProperty Name="Building_part1" ColumnName="Building_part" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Construction_type">
+            <EntityTypeMapping TypeName="MDMModel.Construction_type">
+              <MappingFragment StoreEntitySet="Construction_type">
+                <ScalarProperty Name="Construction_type_id" ColumnName="Construction_type_id" />
+                <ScalarProperty Name="Construction_type_id_access" ColumnName="Construction_type_id_access" />
+                <ScalarProperty Name="Construction_type1" ColumnName="Construction_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Floor_type">
+            <EntityTypeMapping TypeName="MDMModel.Floor_type">
+              <MappingFragment StoreEntitySet="Floor_type">
+                <ScalarProperty Name="Floor_type_id" ColumnName="Floor_type_id" />
+                <ScalarProperty Name="Floor_type_id_access" ColumnName="Floor_type_id_access" />
+                <ScalarProperty Name="Floor_type1" ColumnName="Floor_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object_Area">
+            <EntityTypeMapping TypeName="MDMModel.Object_Area">
+              <MappingFragment StoreEntitySet="Object_Area">
+                <ScalarProperty Name="Object_Area_id" ColumnName="Object_Area_id" />
+                <ScalarProperty Name="Object_Area_ext_id" ColumnName="Object_Area_ext_id" />
+                <ScalarProperty Name="Area_int_id" ColumnName="Area_int_id" />
+                <ScalarProperty Name="Area_id_no_parent" ColumnName="Area_id_no_parent" />
+                <ScalarProperty Name="Object_Area_ext_number" ColumnName="Object_Area_ext_number" />
+                <ScalarProperty Name="Area_int_number" ColumnName="Area_int_number" />
+                <ScalarProperty Name="Object_Area_ext_Area_int_number" ColumnName="Object_Area_ext_Area_int_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object_Area_Item">
+            <EntityTypeMapping TypeName="MDMModel.Object_Area_Item">
+              <MappingFragment StoreEntitySet="Object_Area_Item">
+                <ScalarProperty Name="Object_Area_Item_id" ColumnName="Object_Area_Item_id" />
+                <ScalarProperty Name="Object_Area_id" ColumnName="Object_Area_id" />
+                <ScalarProperty Name="Object_Item_id" ColumnName="Object_Item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object_Item">
+            <EntityTypeMapping TypeName="MDMModel.Object_Item">
+              <MappingFragment StoreEntitySet="Object_Item">
+                <ScalarProperty Name="Object_Item_id" ColumnName="Object_Item_id" />
+                <ScalarProperty Name="Object_id" ColumnName="Object_id" />
+                <ScalarProperty Name="Item_construction_id" ColumnName="Item_construction_id" />
+                <ScalarProperty Name="Item_construction_colour_id" ColumnName="Item_construction_colour_id" />
+                <ScalarProperty Name="Object_Item_number" ColumnName="Object_Item_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object_type">
+            <EntityTypeMapping TypeName="MDMModel.Object_type">
+              <MappingFragment StoreEntitySet="Object_type">
+                <ScalarProperty Name="Object_type_id" ColumnName="Object_type_id" />
+                <ScalarProperty Name="Object_type_id_access" ColumnName="Object_type_id_access" />
+                <ScalarProperty Name="Object_type1" ColumnName="Object_type" />
+                <ScalarProperty Name="Object_type_short" ColumnName="Object_type_short" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objects">
+            <EntityTypeMapping TypeName="MDMModel.Objects">
+              <MappingFragment StoreEntitySet="Objects">
+                <ScalarProperty Name="Object_id" ColumnName="Object_id" />
+                <ScalarProperty Name="Object_id_access" ColumnName="Object_id_access" />
+                <ScalarProperty Name="Object_id_parent" ColumnName="Object_id_parent" />
+                <ScalarProperty Name="Object_type_id" ColumnName="Object_type_id" />
+                <ScalarProperty Name="Cadaster_number" ColumnName="Cadaster_number" />
+                <ScalarProperty Name="Object_name" ColumnName="Object_name" />
+                <ScalarProperty Name="Object_number" ColumnName="Object_number" />
+                <ScalarProperty Name="Object_number_add" ColumnName="Object_number_add" />
+                <ScalarProperty Name="Project_type_id" ColumnName="Project_type_id" />
+                <ScalarProperty Name="Usage_mos_id" ColumnName="Usage_mos_id" />
+                <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Building_part_id" ColumnName="Building_part_id" />
+                <ScalarProperty Name="Construction_type_id" ColumnName="Construction_type_id" />
+                <ScalarProperty Name="Floors" ColumnName="Floors" />
+                <ScalarProperty Name="Froor_type_id" ColumnName="Froor_type_id" />
+                <ScalarProperty Name="Is_floor" ColumnName="Is_floor" />
+                <ScalarProperty Name="Is_technical" ColumnName="Is_technical" />
+                <ScalarProperty Name="Area_id" ColumnName="Area_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_type">
+            <EntityTypeMapping TypeName="MDMModel.Project_type">
+              <MappingFragment StoreEntitySet="Project_type">
+                <ScalarProperty Name="Project_type_id" ColumnName="Project_type_id" />
+                <ScalarProperty Name="Project_type_id_access" ColumnName="Project_type_id_access" />
+                <ScalarProperty Name="Project_type1" ColumnName="Project_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object_cascade">
+            <EntityTypeMapping TypeName="MDMModel.Object_cascade">
+              <MappingFragment StoreEntitySet="Object_cascade">
+                <ScalarProperty Name="Object_id_parent" ColumnName="Object_id_parent" />
+                <ScalarProperty Name="Object_type" ColumnName="Object_type" />
+                <ScalarProperty Name="Object" ColumnName="Object" />
+                <ScalarProperty Name="Object_id" ColumnName="Object_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
