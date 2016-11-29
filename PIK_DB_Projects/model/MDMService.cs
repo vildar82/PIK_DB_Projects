@@ -22,7 +22,7 @@ namespace PIK_DB_Projects
             var con = new EntityConnection(Properties.Settings.Default.MdmCon);
             return new MDMEntities(con);
         }
-
+        
         public static List<ProjectMDM> GetProjects ()
         {
             using (var ents = GetEntities())
@@ -51,12 +51,38 @@ namespace PIK_DB_Projects
                 if (obj == null) return null;
                 var objType = obj.Object_type.GetObjectType();                
                 // Получение вложенных объектов
-                var objMdm = new ObjectMDM(obj.Object_id, objType, obj.Object, null);
-                objMdm.DefineInners(ents.Object_cascade, level);
-                resObjs = objMdm.InnerObjects;
+                var objMdm = new ObjectMDM(obj, null);
+                objMdm.DefineInners(ents.Object_cascade, level, ref resObjs);                
             }
             return resObjs;
         }             
+
+        public static List<ObjectMDM> GetHouses (int parentId)
+        {
+            if (parentId == 0) return null;
+            var resObjs = new List<ObjectMDM>();
+            using (var ents = GetEntities())
+            {
+                // Начальный объект
+                var obj = ents.Object_cascade.FirstOrDefault(o => o.Object_id == parentId);
+                if (obj == null) return null;                
+                // Получение вложенных объектов
+                var objPafrent = new ObjectMDM(obj, null);
+                objPafrent.DefineInners(ents.Object_cascade,  ObjectTypeEnum.House, ref resObjs);
+
+                // Среди дочерних элементов найти блоки у которых назначен IsBuilding
+                var allInnersObjs = objPafrent.GetAllObjects();
+                if (allInnersObjs != null)
+                {
+                    var blockBuilds = allInnersObjs.Where(w => w.ObjectType == ObjectTypeEnum.Block && w.IsBuilding== true);
+                    if (blockBuilds.Any())
+                    {
+                        resObjs.AddRange(blockBuilds);
+                    }
+                }
+            }
+            return resObjs;
+        }
 
         public static string GetObjectType (this ObjectTypeEnum objType)
         {
@@ -65,7 +91,21 @@ namespace PIK_DB_Projects
 
         public static ObjectTypeEnum GetObjectType (this string objType)
         {
-            return objType.ToEnum<ObjectTypeEnum>();
+            switch (objType)
+            {
+                case TypeNameProject:
+                    return ObjectTypeEnum.Project;
+                case TypeNameSite:
+                    return ObjectTypeEnum.Site;
+                case TypeNameQueue:
+                    return ObjectTypeEnum.Queue;
+                case TypeNameBlock:
+                    return ObjectTypeEnum.Block;
+                case TypeNameHouse:
+                    return ObjectTypeEnum.House;
+                default:
+                    throw new Exception($"Неверный тип проекта - {objType}.");
+            }
         }
     }    
 }

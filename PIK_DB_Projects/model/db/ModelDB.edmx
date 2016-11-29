@@ -104,6 +104,7 @@
           <Property Name="Object_type" Type="nvarchar" MaxLength="20" />
           <Property Name="Object_type_short" Type="nvarchar" MaxLength="10" />
           <Property Name="Comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="Object_type_lead_null" Type="tinyint" />
         </EntityType>
         <EntityType Name="Objects">
           <Key>
@@ -125,9 +126,10 @@
           <Property Name="Construction_type_id" Type="int" />
           <Property Name="Floors" Type="smallint" />
           <Property Name="Froor_type_id" Type="int" />
-          <Property Name="Is_floor" Type="bit" Nullable="false" />
-          <Property Name="Is_technical" Type="bit" Nullable="false" />
           <Property Name="Area_id" Type="int" />
+          <Property Name="Is_building" Type="bit" />
+          <Property Name="Is_floor" Type="bit" />
+          <Property Name="Is_technical" Type="bit" />
         </EntityType>
         <EntityType Name="Project_type">
           <Key>
@@ -148,6 +150,7 @@
           <Property Name="Object_id_parent" Type="int" />
           <Property Name="Object" Type="nvarchar" MaxLength="4000" Nullable="false" />
           <Property Name="Object_type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Is_building" Type="bit" />
         </EntityType>
         <Association Name="FK_Area_Area_type">
           <End Role="Area_type" Type="Self.Area_type" Multiplicity="1" />
@@ -359,7 +362,8 @@
     [Object_cascade].[Object_id] AS [Object_id], 
     [Object_cascade].[Object_id_parent] AS [Object_id_parent], 
     [Object_cascade].[Object] AS [Object], 
-    [Object_cascade].[Object_type] AS [Object_type]
+    [Object_cascade].[Object_type] AS [Object_type], 
+    [Object_cascade].[Is_building] AS [Is_building]
     FROM [dbo].[Object_cascade] AS [Object_cascade]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Area_Area_type" Association="Self.FK_Area_Area_type">
@@ -551,6 +555,7 @@
           <Property Name="Object_type_short" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Objects" Relationship="Self.FK_Object_Object_type" FromRole="Object_type" ToRole="Objects" />
+          <Property Name="Object_type_lead_null" Type="Byte" />
         </EntityType>
         <EntityType Name="Objects">
           <Key>
@@ -572,8 +577,8 @@
           <Property Name="Construction_type_id" Type="Int32" />
           <Property Name="Floors" Type="Int16" />
           <Property Name="Froor_type_id" Type="Int32" />
-          <Property Name="Is_floor" Type="Boolean" Nullable="false" />
-          <Property Name="Is_technical" Type="Boolean" Nullable="false" />
+          <Property Name="Is_floor" Type="Boolean" />
+          <Property Name="Is_technical" Type="Boolean" />
           <Property Name="Area_id" Type="Int32" />
           <NavigationProperty Name="Area" Relationship="Self.FK_Object_Area" FromRole="Objects" ToRole="Area" />
           <NavigationProperty Name="Building_part" Relationship="Self.FK_Object_Building_part" FromRole="Objects" ToRole="Building_part" />
@@ -585,6 +590,7 @@
           <NavigationProperty Name="Objects1" Relationship="Self.FK_Object_Object" FromRole="Objects" ToRole="Objects1" />
           <NavigationProperty Name="Objects2" Relationship="Self.FK_Object_Object" FromRole="Objects1" ToRole="Objects" />
           <NavigationProperty Name="Project_type" Relationship="Self.FK_Object_Project_type" FromRole="Objects" ToRole="Project_type" />
+          <Property Name="Is_building" Type="Boolean" />
         </EntityType>
         <EntityType Name="Project_type">
           <Key>
@@ -875,6 +881,7 @@
           <Property Name="Object" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="Object_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Object_id_parent" Type="Int32" />
+          <Property Name="Is_building" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -984,6 +991,7 @@
           <EntitySetMapping Name="Object_type">
             <EntityTypeMapping TypeName="MDMModel.Object_type">
               <MappingFragment StoreEntitySet="Object_type">
+                <ScalarProperty Name="Object_type_lead_null" ColumnName="Object_type_lead_null" />
                 <ScalarProperty Name="Object_type_id" ColumnName="Object_type_id" />
                 <ScalarProperty Name="Object_type_id_access" ColumnName="Object_type_id_access" />
                 <ScalarProperty Name="Object_type1" ColumnName="Object_type" />
@@ -995,6 +1003,7 @@
           <EntitySetMapping Name="Objects">
             <EntityTypeMapping TypeName="MDMModel.Objects">
               <MappingFragment StoreEntitySet="Objects">
+                <ScalarProperty Name="Is_building" ColumnName="Is_building" />
                 <ScalarProperty Name="Object_id" ColumnName="Object_id" />
                 <ScalarProperty Name="Object_id_access" ColumnName="Object_id_access" />
                 <ScalarProperty Name="Object_id_parent" ColumnName="Object_id_parent" />
@@ -1029,6 +1038,7 @@
           <EntitySetMapping Name="Object_cascade">
             <EntityTypeMapping TypeName="MDMModel.Object_cascade">
               <MappingFragment StoreEntitySet="Object_cascade">
+                <ScalarProperty Name="Is_building" ColumnName="Is_building" />
                 <ScalarProperty Name="Object_id_parent" ColumnName="Object_id_parent" />
                 <ScalarProperty Name="Object_type" ColumnName="Object_type" />
                 <ScalarProperty Name="Object" ColumnName="Object" />

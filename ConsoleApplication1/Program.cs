@@ -11,13 +11,7 @@ namespace ConsoleApplication1
     {
         static void Main (string[] args)
         {
-            // Список проектов
-            var projects = MDMService.GetProjects();
-            foreach (var item in projects)
-            {
-                Console.WriteLine($"{item.Id} - {item.Name}");
-            }
-            Console.ReadKey();
+            
         }
     }
 }

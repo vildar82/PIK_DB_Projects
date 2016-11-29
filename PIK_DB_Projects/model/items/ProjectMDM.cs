@@ -14,10 +14,10 @@ namespace PIK_DB_Projects
         /// <summary>
         /// Идентификатор проекта
         /// </summary>
-        public int Id { get; internal set; }
+        public int Id { get; set; }
         /// <summary>
         /// Имя проекта
         /// </summary>
-        public string Name { get; internal set; }
+        public string Name { get; set; }
     }
 }

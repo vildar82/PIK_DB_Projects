@@ -25,6 +25,7 @@ namespace PIK_DB_Projects.model.db
         public string Object_type1 { get; set; }
         public string Object_type_short { get; set; }
         public string Comments { get; set; }
+        public Nullable<byte> Object_type_lead_null { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Objects> Objects { get; set; }

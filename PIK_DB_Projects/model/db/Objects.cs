@@ -38,9 +38,10 @@ namespace PIK_DB_Projects.model.db
         public Nullable<int> Construction_type_id { get; set; }
         public Nullable<short> Floors { get; set; }
         public Nullable<int> Froor_type_id { get; set; }
-        public bool Is_floor { get; set; }
-        public bool Is_technical { get; set; }
+        public Nullable<bool> Is_floor { get; set; }
+        public Nullable<bool> Is_technical { get; set; }
         public Nullable<int> Area_id { get; set; }
+        public Nullable<bool> Is_building { get; set; }
     
         public virtual Area Area { get; set; }
         public virtual Building_part Building_part { get; set; }

@@ -18,5 +18,6 @@ namespace PIK_DB_Projects.model.db
         public string Object { get; set; }
         public string Object_type { get; set; }
         public Nullable<int> Object_id_parent { get; set; }
+        public Nullable<bool> Is_building { get; set; }
     }
 }
