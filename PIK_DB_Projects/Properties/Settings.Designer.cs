@@ -32,5 +32,15 @@ namespace PIK_DB_Projects.Properties {
                 return ((string)(this["MdmCon"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"metadata=res://*/model.ins.ModelIns.csdl|res://*/model.ins.ModelIns.ssdl|res://*/model.ins.ModelIns.msl;provider=System.Data.SqlClient;provider connection string=""data source=cad01pik;initial catalog=MDM;persist security info=True;user id=Vildar;password=28Vildar;MultipleActiveResultSets=True;App=EntityFramework""")]
+        public string InsCon {
+            get {
+                return ((string)(this["InsCon"]));
+            }
+        }
     }
 }

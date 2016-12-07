@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище InsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Insolation_Object">
+          <Key>
+            <PropertyRef Name="Insolation_Object_id" />
+          </Key>
+          <Property Name="Insolation_Object_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Object_id" Type="int" Nullable="false" />
+          <Property Name="Insolation_version_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Insolation_Object_Point">
+          <Key>
+            <PropertyRef Name="Insolation_Object_Point_id" />
+          </Key>
+          <Property Name="Insolation_Object_Point_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Insolation_Object_id" Type="int" Nullable="false" />
+          <Property Name="Point_string" Type="nvarchar" MaxLength="10" />
+          <Property Name="Insolation_type_id" Type="int" />
+          <Property Name="Point_row" Type="int" />
+          <Property Name="Point_column" Type="int" />
+        </EntityType>
+        <EntityType Name="Insolation_type">
+          <Key>
+            <PropertyRef Name="Insolation_type_id" />
+          </Key>
+          <Property Name="Insolation_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Insolation_type_description" Type="ntext" />
+          <Property Name="Insolation_type" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Insolation_version">
+          <Key>
+            <PropertyRef Name="Insolation_version_id" />
+          </Key>
+          <Property Name="Insolation_version_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Insolation_version_datetime" Type="datetime" />
+          <Property Name="Insolation_version" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Insolation_Object_Objects">
+          <End Role="Insolation_version" Type="Self.Insolation_version" Multiplicity="0..1" />
+          <End Role="Insolation_Object" Type="Self.Insolation_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insolation_version">
+              <PropertyRef Name="Insolation_version_id" />
+            </Principal>
+            <Dependent Role="Insolation_Object">
+              <PropertyRef Name="Insolation_version_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Insolation_Object_Point_Insolation_Object">
+          <End Role="Insolation_Object" Type="Self.Insolation_Object" Multiplicity="1" />
+          <End Role="Insolation_Object_Point" Type="Self.Insolation_Object_Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insolation_Object">
+              <PropertyRef Name="Insolation_Object_id" />
+            </Principal>
+            <Dependent Role="Insolation_Object_Point">
+              <PropertyRef Name="Insolation_Object_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Insolation_Object_Point_Insolation_type">
+          <End Role="Insolation_type" Type="Self.Insolation_type" Multiplicity="0..1" />
+          <End Role="Insolation_Object_Point" Type="Self.Insolation_Object_Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insolation_type">
+              <PropertyRef Name="Insolation_type_id" />
+            </Principal>
+            <Dependent Role="Insolation_Object_Point">
+              <PropertyRef Name="Insolation_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище InsModelContainer">
+          <EntitySet Name="Insolation_Object" EntityType="Self.Insolation_Object" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insolation_Object_Point" EntityType="Self.Insolation_Object_Point" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insolation_type" EntityType="Self.Insolation_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insolation_version" EntityType="Self.Insolation_version" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Insolation_Object_Objects" Association="Self.FK_Insolation_Object_Objects">
+            <End Role="Insolation_version" EntitySet="Insolation_version" />
+            <End Role="Insolation_Object" EntitySet="Insolation_Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Insolation_Object_Point_Insolation_Object" Association="Self.FK_Insolation_Object_Point_Insolation_Object">
+            <End Role="Insolation_Object" EntitySet="Insolation_Object" />
+            <End Role="Insolation_Object_Point" EntitySet="Insolation_Object_Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Insolation_Object_Point_Insolation_type" Association="Self.FK_Insolation_Object_Point_Insolation_type">
+            <End Role="Insolation_type" EntitySet="Insolation_type" />
+            <End Role="Insolation_Object_Point" EntitySet="Insolation_Object_Point" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Insolation_Object">
+          <Key>
+            <PropertyRef Name="Insolation_Object_id" />
+          </Key>
+          <Property Name="Insolation_Object_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Object_id" Type="Int32" Nullable="false" />
+          <Property Name="Insolation_version_id" Type="Int32" />
+          <NavigationProperty Name="Insolation_version" Relationship="Self.FK_Insolation_Object_Objects" FromRole="Insolation_Object" ToRole="Insolation_version" />
+          <NavigationProperty Name="Insolation_Object_Point" Relationship="InsModel.FK_Insolation_Object_Point_Insolation_Object" FromRole="Insolation_Object" ToRole="Insolation_Object_Point" />
+        </EntityType>
+        <EntityType Name="Insolation_type">
+          <Key>
+            <PropertyRef Name="Insolation_type_id" />
+          </Key>
+          <Property Name="Insolation_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Insolation_type_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Insolation_type1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Insolation_Object_Point" Relationship="InsModel.FK_Insolation_Object_Point_Insolation_type" FromRole="Insolation_type" ToRole="Insolation_Object_Point" />
+        </EntityType>
+        <EntityType Name="Insolation_version">
+          <Key>
+            <PropertyRef Name="Insolation_version_id" />
+          </Key>
+          <Property Name="Insolation_version_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Insolation_version_datetime" Type="DateTime" Precision="3" />
+          <Property Name="Insolation_version1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Insolation_Object" Relationship="Self.FK_Insolation_Object_Objects" FromRole="Insolation_version" ToRole="Insolation_Object" />
+        </EntityType>
+        <Association Name="FK_Insolation_Object_Objects">
+          <End Role="Insolation_version" Type="Self.Insolation_version" Multiplicity="0..1" />
+          <End Role="Insolation_Object" Type="Self.Insolation_Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insolation_version">
+              <PropertyRef Name="Insolation_version_id" />
+            </Principal>
+            <Dependent Role="Insolation_Object">
+              <PropertyRef Name="Insolation_version_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Insolation_Object" EntityType="Self.Insolation_Object" />
+          <EntitySet Name="Insolation_type" EntityType="Self.Insolation_type" />
+          <EntitySet Name="Insolation_version" EntityType="Self.Insolation_version" />
+          <AssociationSet Name="FK_Insolation_Object_Objects" Association="Self.FK_Insolation_Object_Objects">
+            <End Role="Insolation_version" EntitySet="Insolation_version" />
+            <End Role="Insolation_Object" EntitySet="Insolation_Object" />
+          </AssociationSet>
+          <EntitySet Name="Insolation_Object_Point" EntityType="InsModel.Insolation_Object_Point" />
+          <AssociationSet Name="FK_Insolation_Object_Point_Insolation_Object" Association="InsModel.FK_Insolation_Object_Point_Insolation_Object">
+            <End Role="Insolation_Object" EntitySet="Insolation_Object" />
+            <End Role="Insolation_Object_Point" EntitySet="Insolation_Object_Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Insolation_Object_Point_Insolation_type" Association="InsModel.FK_Insolation_Object_Point_Insolation_type">
+            <End Role="Insolation_type" EntitySet="Insolation_type" />
+            <End Role="Insolation_Object_Point" EntitySet="Insolation_Object_Point" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Insolation_Object_Point">
+          <Key>
+            <PropertyRef Name="Insolation_Object_Point_id" />
+          </Key>
+          <Property Name="Insolation_Object_Point_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Insolation_Object_id" Type="Int32" Nullable="false" />
+          <Property Name="Insolation_type_id" Type="Int32" />
+          <Property Name="Point_row" Type="Int32" />
+          <Property Name="Point_column" Type="Int32" />
+          <NavigationProperty Name="Insolation_Object" Relationship="InsModel.FK_Insolation_Object_Point_Insolation_Object" FromRole="Insolation_Object_Point" ToRole="Insolation_Object" />
+          <NavigationProperty Name="Insolation_type" Relationship="InsModel.FK_Insolation_Object_Point_Insolation_type" FromRole="Insolation_Object_Point" ToRole="Insolation_type" />
+        </EntityType>
+        <Association Name="FK_Insolation_Object_Point_Insolation_Object">
+          <End Type="InsModel.Insolation_Object" Role="Insolation_Object" Multiplicity="1" />
+          <End Type="InsModel.Insolation_Object_Point" Role="Insolation_Object_Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insolation_Object">
+              <PropertyRef Name="Insolation_Object_id" />
+            </Principal>
+            <Dependent Role="Insolation_Object_Point">
+              <PropertyRef Name="Insolation_Object_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Insolation_Object_Point_Insolation_type">
+          <End Type="InsModel.Insolation_type" Role="Insolation_type" Multiplicity="0..1" />
+          <End Type="InsModel.Insolation_Object_Point" Role="Insolation_Object_Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insolation_type">
+              <PropertyRef Name="Insolation_type_id" />
+            </Principal>
+            <Dependent Role="Insolation_Object_Point">
+              <PropertyRef Name="Insolation_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище InsModelContainer" CdmEntityContainer="InsEntities">
+          <EntitySetMapping Name="Insolation_Object">
+            <EntityTypeMapping TypeName="InsModel.Insolation_Object">
+              <MappingFragment StoreEntitySet="Insolation_Object">
+                <ScalarProperty Name="Insolation_Object_id" ColumnName="Insolation_Object_id" />
+                <ScalarProperty Name="Object_id" ColumnName="Object_id" />
+                <ScalarProperty Name="Insolation_version_id" ColumnName="Insolation_version_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insolation_type">
+            <EntityTypeMapping TypeName="InsModel.Insolation_type">
+              <MappingFragment StoreEntitySet="Insolation_type">
+                <ScalarProperty Name="Insolation_type_id" ColumnName="Insolation_type_id" />
+                <ScalarProperty Name="Insolation_type_description" ColumnName="Insolation_type_description" />
+                <ScalarProperty Name="Insolation_type1" ColumnName="Insolation_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insolation_version">
+            <EntityTypeMapping TypeName="InsModel.Insolation_version">
+              <MappingFragment StoreEntitySet="Insolation_version">
+                <ScalarProperty Name="Insolation_version_id" ColumnName="Insolation_version_id" />
+                <ScalarProperty Name="Insolation_version_datetime" ColumnName="Insolation_version_datetime" />
+                <ScalarProperty Name="Insolation_version1" ColumnName="Insolation_version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insolation_Object_Point">
+            <EntityTypeMapping TypeName="InsModel.Insolation_Object_Point">
+              <MappingFragment StoreEntitySet="Insolation_Object_Point">
+                <ScalarProperty Name="Point_column" ColumnName="Point_column" />
+                <ScalarProperty Name="Point_row" ColumnName="Point_row" />
+                <ScalarProperty Name="Insolation_type_id" ColumnName="Insolation_type_id" />
+                <ScalarProperty Name="Insolation_Object_id" ColumnName="Insolation_Object_id" />
+                <ScalarProperty Name="Insolation_Object_Point_id" ColumnName="Insolation_Object_Point_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

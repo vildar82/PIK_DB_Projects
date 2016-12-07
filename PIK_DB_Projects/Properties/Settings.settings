@@ -10,5 +10,12 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">metadata=res://*/model.db.ModelDB.csdl|res://*/model.db.ModelDB.ssdl|res://*/model.db.ModelDB.msl;provider=System.Data.SqlClient;provider connection string="data source=cad01pik;initial catalog=MDM;persist security info=True;user id=Vildar;password=28Vildar;MultipleActiveResultSets=True;App=EntityFramework"</Value>
     </Setting>
+    <Setting Name="InsCon" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;metadata=res://*/model.ins.ModelIns.csdl|res://*/model.ins.ModelIns.ssdl|res://*/model.ins.ModelIns.msl;provider=System.Data.SqlClient;provider connection string="data source=cad01pik;initial catalog=MDM;persist security info=True;user id=Vildar;password=28Vildar;MultipleActiveResultSets=True;App=EntityFramework"&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">metadata=res://*/model.ins.ModelIns.csdl|res://*/model.ins.ModelIns.ssdl|res://*/model.ins.ModelIns.msl;provider=System.Data.SqlClient;provider connection string="data source=cad01pik;initial catalog=MDM;persist security info=True;user id=Vildar;password=28Vildar;MultipleActiveResultSets=True;App=EntityFramework"</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

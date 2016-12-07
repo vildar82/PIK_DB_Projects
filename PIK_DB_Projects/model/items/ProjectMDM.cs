@@ -19,5 +19,10 @@ namespace PIK_DB_Projects
         /// Имя проекта
         /// </summary>
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
