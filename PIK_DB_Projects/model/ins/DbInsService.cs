@@ -37,7 +37,7 @@ namespace PIK_DB_Projects.Ins
 
                 // Найти данные инс связанные с этими домами
                 // Все объекты инс для домов проекта
-                var insObjectsDb = ent.Insolation_Object.ToList().Where(w => housesDb.Any(h => h.Id == w.Object_id)).ToList();
+                var insObjectsDb = ent.Insolation_Object.ToList().Where(w => housesDb.Any(h => h.Id == w.Object_id)).ToList();                
                 // данные объектов инсоляции для каждого объекта (InsVer-версия инс, данные объекта)
                 var objectsData = new List<Tuple<Insolation_version, InsObject>>();
                 foreach (var objDb in insObjectsDb)

@@ -27,10 +27,10 @@ namespace PIK_DB_Projects
         {
             using (var ents = GetEntities())
             {
-                var projects = ents.Objects.Where(w => w.Object_type.Object_type1 == TypeNameProject)
+                var projects = ents.Object_cascade.Where(w => w.Object_type == TypeNameProject)
                     .Select(s => new ProjectMDM
                     {
-                        Name = s.Object_name,
+                        Name = s.Object,
                         Id = s.Object_id
                     }).ToList();
                 return projects;
@@ -40,6 +40,7 @@ namespace PIK_DB_Projects
         /// <summary>
         /// Иерархия объекта
         /// </summary>        
+        /// <param name="level">Уровень вложенности</param>
         public static List<ObjectMDM> GetObjects (int objectId, ObjectTypeEnum level)
         {
             if (objectId == 0) return null;
@@ -48,8 +49,7 @@ namespace PIK_DB_Projects
             {   
                 // Начальный объект
                 var obj = ents.Object_cascade.FirstOrDefault(o => o.Object_id == objectId);
-                if (obj == null) return null;
-                var objType = obj.Object_type.GetObjectType();                
+                if (obj == null) return null;                
                 // Получение вложенных объектов
                 var objMdm = new ObjectMDM(obj, null);
                 objMdm.DefineInners(ents.Object_cascade, level, ref resObjs);                
@@ -66,12 +66,15 @@ namespace PIK_DB_Projects
                 // Начальный объект
                 var obj = ents.Object_cascade.FirstOrDefault(o => o.Object_id == parentId);
                 if (obj == null) return null;                
-                // Получение вложенных объектов
-                var objPafrent = new ObjectMDM(obj, null);
-                objPafrent.DefineInners(ents.Object_cascade,  ObjectTypeEnum.House, ref resObjs);
+                // Получение вложенных объектов нужного уровня (Корпус)
+                var objParent = new ObjectMDM(obj, null);
+                objParent.DefineInners(ents.Object_cascade,  ObjectTypeEnum.House, ref resObjs);
 
-                // Среди дочерних элементов найти блоки у которых назначен IsBuilding
-                var allInnersObjs = objPafrent.GetAllObjects();
+                // В найденных корпусах оставить только те, которые являются зданиями
+                resObjs = resObjs.Where(w => w.IsBuilding == true).ToList();
+
+                // Среди дочерних элементов найти блоки у которые являются домами
+                var allInnersObjs = objParent.GetAllObjects();
                 if (allInnersObjs != null)
                 {
                     var blockBuilds = allInnersObjs.Where(w => w.ObjectType == ObjectTypeEnum.Block && w.IsBuilding== true);
