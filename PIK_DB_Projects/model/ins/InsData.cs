@@ -32,10 +32,10 @@ namespace PIK_DB_Projects.Ins
         /// </summary>
         public void ToExcel()
         {
-            var tempFile = Path.GetTempFileName().Replace(".tmp", ".xlsx");
+            var tempFile = NetLib.IO.Path.GetTempFile(".xlsx");
             using (var exc = new ExcelPackage(new FileInfo(tempFile)))
             {
-                var sheet = exc.Workbook.Worksheets.Add("Ins");
+                var sheet = exc.Workbook.Worksheets.Add("Схема инсоляции");
                 foreach (var obj in Objects)
                 {
                     foreach (var pt in obj.Points)

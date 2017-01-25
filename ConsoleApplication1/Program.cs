@@ -11,7 +11,14 @@ namespace ConsoleApplication1
     {
         static void Main (string[] args)
         {
-            
+            using (var ent = new TestDB.SAPREntities())
+            {
+                var data = ent.C_Sections.ToList();
+            }            
+
+            //var adapter = new TestDB.DataSet1TableAdapters.C_SectionsTableAdapter();
+            //var data = adapter.GetData();
+            //data = adapter.GetData();
         }
     }
 }

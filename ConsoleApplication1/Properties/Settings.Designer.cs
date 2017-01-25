@@ -33,5 +33,16 @@ namespace ConsoleApplication1.Properties {
                 return ((string)(this["MDMConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=cad01pik;Initial Catalog=SAPR;Persist Security Info=True;User ID=cad_" +
+            "ar;Password=qwerty!2345")]
+        public string SAPRConnectionString {
+            get {
+                return ((string)(this["SAPRConnectionString"]));
+            }
+        }
     }
 }
