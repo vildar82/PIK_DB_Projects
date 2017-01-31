@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PIK_DB_Projects
 {
-    public class ObjectMDM
+    public class ObjectMDM : IEquatable<ObjectMDM>
     {
         public ObjectMDM()
         {
@@ -68,5 +68,30 @@ namespace PIK_DB_Projects
             }
             return resObjs;
         }
+
+        public bool Equals(ObjectMDM other)
+        {
+            if (other == null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
+        public static bool operator ==(ObjectMDM obj1, ObjectMDM obj2)
+        {            
+            if (ReferenceEquals(obj1, obj2)) return true;            
+            if (((object)obj1 == null) || ((object)obj2 == null)) return false;
+            return obj1.Equals(obj2);
+        }
+
+        public static bool operator !=(ObjectMDM obj1, ObjectMDM obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
     }
 }
